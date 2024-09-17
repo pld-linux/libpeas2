@@ -15,16 +15,16 @@
 Summary:	GObject Plugin System
 Summary(pl.UTF-8):	System wtyczek GObject
 Name:		libpeas2
-Version:	2.0.3
+Version:	2.0.5
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/libpeas/2.0/libpeas-%{version}.tar.xz
-# Source0-md5:	b866fefe6ec2dba5985984d529ff674d
+# Source0-md5:	f6691674263c68a977324b11c0a7609c
 URL:		https://wiki.gnome.org/Libpeas
 BuildRequires:	gettext-tools >= 0.19.7
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.7}
-%{?with_gjs:BuildRequires:	gjs-devel >= 1.77.1}
+%{?with_gjs:BuildRequires:	gjs-devel >= 1.81.2}
 BuildRequires:	glib2-devel >= 1:2.74
 BuildRequires:	gobject-introspection-devel >= 1.40.0
 BuildRequires:	libstdc++-devel >= 6:7
@@ -38,8 +38,8 @@ BuildRequires:	luajit >= 2.0
 BuildRequires:	luajit-devel >= 2.0
 %endif
 %endif
-BuildRequires:	meson >= 0.50.0
-%{?with_gjs:BuildRequires:	mozjs115-devel >= 115}
+BuildRequires:	meson >= 0.62.0
+%{?with_gjs:BuildRequires:	mozjs128-devel >= 128}
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 %if %{with python}
@@ -77,7 +77,7 @@ Summary:	JavaScript (GJS) loader for libpeas 2 library
 Summary(pl.UTF-8):	Moduł ładujący dla JavaScriptu (GJS) do biblioteki libpeas 2
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gjs >= 1.77.1
+Requires:	gjs >= 1.81.2
 
 %description loader-gjs
 JavaScript (GJS) loader for libpeas 2 library.
