@@ -15,12 +15,12 @@
 Summary:	GObject Plugin System
 Summary(pl.UTF-8):	System wtyczek GObject
 Name:		libpeas2
-Version:	2.0.5
-Release:	3
+Version:	2.0.7
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/libpeas/2.0/libpeas-%{version}.tar.xz
-# Source0-md5:	f6691674263c68a977324b11c0a7609c
+# Source0-md5:	b0f2736b83a554f189ddbe37e442ca56
 URL:		https://wiki.gnome.org/Libpeas
 BuildRequires:	gettext-tools >= 0.19.7
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.7}
@@ -47,7 +47,7 @@ BuildRequires:	python3-devel >= 1:3.2.0
 BuildRequires:	python3-pygobject3-devel >= 3.2.0
 %endif
 BuildRequires:	rpm-build >= 4.6
-BuildRequires:	rpmbuild(macros) >= 2.029
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala
 BuildRequires:	xz
@@ -177,7 +177,7 @@ EOF
 
 %build
 export PKG_CONFIG_PATH=$(pwd)/fake-pkgconfig
-%meson build \
+%meson \
 	%{!?with_static_libs:--default-library=shared} \
 	%{!?with_gjs:-Dgjs=false} \
 	%{?with_apidocs:-Dgtk_doc=true} \
@@ -185,12 +185,12 @@ export PKG_CONFIG_PATH=$(pwd)/fake-pkgconfig
 	%{!?with_python:-Dpython3=false} \
 	-Dvapi=true
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %if %{with apidocs}
 install -d $RPM_BUILD_ROOT%{_gidocdir}
